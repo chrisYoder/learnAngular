@@ -1,0 +1,51 @@
+<!doctype html>
+<html data-ng-app="myApp">
+    <head>
+        <title>learning angular</title>
+        <meta name='viewport' content="width=device-width, initial-scale=1.0">
+        <meta charset='utf-8'>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular-route.min.js"></script>
+    </head>
+    <body>
+
+
+        <h1>Learning AngularJS</h1>
+        <h2>View 1</h2>
+        <div class="container" id='basicDataBinding'>
+            <h3>Two Way Data Binding</h3>
+            <label>Name:</label>
+            <input type='text' ng-model="name" /> {{ name }}
+        </div>
+
+        <div class='container' id='iteratingWithNgRepeat' ng-init="names=['Ned Stark', 'Catelyn Stark', 'Robb Stark', 'Aegon Targaryean', 'Sansa Stark', 'Bran Stark', 'Arya Stark', 'Rickon Stark']">
+            <h3>Looping with ng-repeat directive</h3>
+            <ul>
+                <li ng-repeat='personName in names'>{{ personName }}</li>
+            </ul>
+        </div>
+
+        <div class="container" id="usingfilters" ng-init="customers=[{name: 'Jon Snow', city: 'Castle Black'}, {name: 'Robert Baratheon', city: 'Kings Landing'}, {name: 'Ned Stark', city: 'Winterfell'}, {name: 'Jorah Mormont', city: 'Pentos'}]">
+            <h3>Using Filters</h3>
+            <ul>
+                <li ng-repeat="cust in customers | orderBy: 'name'"> {{ cust.name | uppercase }}</li>
+            </ul>
+
+            <input type='text' ng-model='nameText'>
+            <ul>
+                <li ng-repeat='cust in customers | filter: nameText | orderBy:"city"'>{{ cust.name }} - {{ cust.city }}</li>
+            </ul>
+        </div>
+
+        <h2><a href="#!View2.html">Click to View 2</a>
+
+        <div ng-controller="simpleController">
+            <h3>Adding a simple controller</h3>
+            <ul>
+                <li ng-repeat='char in characters'> {{ char.name }} -- {{ char.country }}</li>
+            </ul>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
